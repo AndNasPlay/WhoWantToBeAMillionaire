@@ -14,11 +14,18 @@ class Singleton {
     var score: Int = 0
     var numberOfQuestion: Int = 0
     var procentOfwin: Float = 0.0
+    var gameDifficulty: Difficulty = .easy
+    var allQuestionId: Int = 5
+    var gameDifficultySegment: Int {
+        switch gameDifficulty {
+        case .easy:
+            return 0
+        case .hard:
+            return 1
+        }
+    }
     
-    
-    
-    //var GameSession: GameSession?
-    
+        
     private let recordsCaretaker = Memento()
     
     private(set) var allGameSession: [GameResults] {
@@ -26,11 +33,11 @@ class Singleton {
             recordsCaretaker.saveRecords(records: allGameSession)
         }
     }
-    
+
     func addResult(result: GameResults) {
         allGameSession.append(result)
     }
-    
+        
     func clearRecords() {
         allGameSession.removeAll()
     }
@@ -38,6 +45,6 @@ class Singleton {
     private init() {
         allGameSession = recordsCaretaker.loadRecords() ?? []
     }
-
+    
 }
 

@@ -8,6 +8,7 @@
 
 
 import UIKit
+import RealmSwift
 
 
 class MainViewController: UIViewController {
@@ -23,7 +24,8 @@ class MainViewController: UIViewController {
                     guard let self = self else { return }
                     self.LastResult.text = "Your last result is: \(result) USD"
                 }
-            }  
+            }
+            
         default:
             break
         }
@@ -35,12 +37,20 @@ class MainViewController: UIViewController {
         performSegue(withIdentifier: "GameVc", sender: self)
     }
     
+    @IBAction func GoSettings(_ sender: UIButton) {
+        
+        
+        performSegue(withIdentifier: "SettingsVc", sender: self)
+    }
+    
     @IBAction func ResultButton(_ sender: UIButton) {
         performSegue(withIdentifier: "ResultVC", sender: self)
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
     }
 }
 

@@ -21,7 +21,6 @@ class ResultViewController: UIViewController {
         super.viewDidLoad()
         ScoreTableView.delegate = self
         ScoreTableView.dataSource = self
-        
     }
     
 }

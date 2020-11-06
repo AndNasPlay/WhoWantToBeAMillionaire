@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class GameViewController: UIViewController {
     
@@ -38,33 +39,33 @@ class GameViewController: UIViewController {
     
     
     @IBAction func Answer1(_ sender: UIButton) {
-        if checkAnswer(Answer: QuestionAnswerArr[questionStart].answer[0], AnswerPosition: Answer1Title) == true {
+        if checkAnswer(Answer: QuestionAnswerArrRealm![questionStart.value].answer[0], AnswerPosition: Answer1Title) == true {
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
-                self.addQuestion(numberOfQuestion: self.questionStart)
+                self.addQuestion(numberOfQuestion: self.questionStart.value)
             })
         }
     }
     
     @IBAction func Answer2(_ sender: UIButton) {
-        if checkAnswer(Answer: QuestionAnswerArr[questionStart].answer[1], AnswerPosition: Answer2Title) == true {
+        if checkAnswer(Answer: QuestionAnswerArrRealm![questionStart.value].answer[1], AnswerPosition: Answer2Title) == true {
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
-                self.addQuestion(numberOfQuestion: self.questionStart)
+                self.addQuestion(numberOfQuestion: self.questionStart.value)
             })
         }
     }
     
     @IBAction func Answer3(_ sender: UIButton) {
-        if checkAnswer(Answer: QuestionAnswerArr[questionStart].answer[2], AnswerPosition: Answer3Title) == true {
+        if checkAnswer(Answer: QuestionAnswerArrRealm![questionStart.value].answer[2], AnswerPosition: Answer3Title) == true {
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
-                self.addQuestion(numberOfQuestion: self.questionStart)
+                self.addQuestion(numberOfQuestion: self.questionStart.value)
             })
         }
     }
     
     @IBAction func Answer4(_ sender: UIButton) {
-        if checkAnswer(Answer: QuestionAnswerArr[questionStart].answer[3], AnswerPosition: Answer4Title) == true {
+        if checkAnswer(Answer: QuestionAnswerArrRealm![questionStart.value].answer[3], AnswerPosition: Answer4Title) == true {
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
-                self.addQuestion(numberOfQuestion: self.questionStart)
+                self.addQuestion(numberOfQuestion: self.questionStart.value)
             })
         }
     }
@@ -72,7 +73,7 @@ class GameViewController: UIViewController {
     
     @IBAction func PromptCall(_ sender: UIButton) {
         if promptCallInt == 1 {
-            PromptCallFriend(QuestionAnswerStruct: (QuestionAnswerArr[questionStart]))
+            PromptCallFriend(QuestionAnswerStruct: (QuestionAnswerArrRealm![questionStart.value]))
             PromptCallLable.setBackgroundImage(UIImage(named: "friendUse"), for: .normal)
             promptCallInt -= 1
         } else { return }
@@ -81,7 +82,7 @@ class GameViewController: UIViewController {
     
     @IBAction func Prompt50(_ sender: UIButton) {
         if prompt50Int == 1 {
-            Prompt50T50(QuestionAnswerStruct: (QuestionAnswerArr[questionStart]))
+            Prompt50T50(QuestionAnswerStruct: (QuestionAnswerArrRealm![questionStart.value]))
             Prompt50Lable.setBackgroundImage(UIImage(named: "50use"), for: .normal)
             prompt50Int -= 1
         } else { return }
@@ -90,13 +91,13 @@ class GameViewController: UIViewController {
     
     @IBAction func PromptHelp(_ sender: UIButton) {
         if promptHelpInt == 1 {
-            PromptHelpPeople(QuestionAnswerStruct: (QuestionAnswerArr[questionStart]))
+            PromptHelpPeople(QuestionAnswerStruct: (QuestionAnswerArrRealm![questionStart.value]))
             PromptHelpLable.setBackgroundImage(UIImage(named: "zalUse"), for: .normal)
             promptHelpInt -= 1
         } else { return }
     }
     
-    let QuestionAnswerArr = [
+    var QuestionAnswerArr = [
         QuestionAnswerStruct(
             questionId: 1,
             question: "На каком инструменте, как считается, играл древнерусский певец и сказитель Боян?",
@@ -135,7 +136,7 @@ class GameViewController: UIViewController {
             questionCost: 5000),
         QuestionAnswerStruct(
             questionId: 5,
-            question: "Вопрос номер пять. Кто автор музыки к детской песенке Чунга-Чанга?",
+            question: "Кто автор музыки к детской песенке Чунга-Чанга?",
             answer:[
                 Answer(answer: "Шаинский", answerBool: 1, answerCost: 10000),
                 Answer(answer: "Зацепин", answerBool: 0, answerCost: 0),
@@ -144,31 +145,79 @@ class GameViewController: UIViewController {
             questionCost: 10000)
     ]
     
-    var questionStart: Int = 0
+    var QuestionAnswerArrRealm: [QuestionAnswerRealm]?
+    
+    private var QuestionAnswerArrRealmNo: Results<QuestionAnswerRealm>? {
+        let QuestionAnswerArrRealm: Results<QuestionAnswerRealm>? = realmManager?.getObjects()
+        return QuestionAnswerArrRealm?.sorted(byKeyPath: "questionId", ascending: true)
+    }
+    
+    
+    var questionStart = Observable<Int>(0)
     var moneyBalance: Int = 0
     var promptCallInt: Int = 1
     var prompt50Int: Int = 1
     var promptHelpInt: Int = 1
     var onGameEnd: ((Int) -> Void)?
+    var difficulty: Difficulty = Singleton.shared.gameDifficulty
+    private let realmManager = RealmManager.shared
     
+    public func addRealmBase() {
+        
+        var questionTest = QuestionAnswerRealm()
+        let answerTest = List<AnswerRealm>()
+        
+        let realm = try! Realm()
+        
+        for n in 0...4 {
+            questionTest = addQuestionRealm(questionNumerb: n)
+            
+            for i in 0...3 {
+                answerTest.append(addAnswer(answerNumber: i, questionNumerb: n))
+            }
+            
+            questionTest.answer.append(objectsIn: answerTest)
+            answerTest.removeAll()
+            try! realm.write {
+                realm.add(questionTest)
+            }
+        }
+    }
+    
+    func addQuestionRealm(questionNumerb: Int) -> QuestionAnswerRealm {
+        let questionRealm = QuestionAnswerRealm()
+        questionRealm.questionId = QuestionAnswerArr[questionNumerb].questionId
+        questionRealm.question = QuestionAnswerArr[questionNumerb].question
+        questionRealm.questionCost = QuestionAnswerArr[questionNumerb].questionCost
+        
+        return questionRealm
+    }
+    
+    func addAnswer(answerNumber: Int, questionNumerb: Int) -> AnswerRealm {
+        let answerOneTest1 = AnswerRealm()
+        
+        answerOneTest1.answerCost = QuestionAnswerArr[questionNumerb].answer[answerNumber].answerCost
+        answerOneTest1.answerBool = QuestionAnswerArr[questionNumerb].answer[answerNumber].answerBool
+        answerOneTest1.answer = QuestionAnswerArr[questionNumerb].answer[answerNumber].answer
+        
+        return answerOneTest1
+    }
     
     func addQuestion(numberOfQuestion: Int) {
-        if numberOfQuestion < 5 {
-            NumberOfQ.text = "Вопрос № \(QuestionAnswerArr[numberOfQuestion].questionId )"
-            QuestionLable.backgroundColor = UIColor(patternImage: UIImage(named: "newform335")!)
-            QuestionLable.text = QuestionAnswerArr[numberOfQuestion].question
-            Cash.text = "\(QuestionAnswerArr[numberOfQuestion].questionCost) USD"
+        if numberOfQuestion < QuestionAnswerArrRealm!.count  {
+            NumberOfQ.text = "Вопрос № \(questionStart.value + 1)"
+            QuestionLable.text = QuestionAnswerArrRealm![numberOfQuestion].question
+            Cash.text = "\(QuestionAnswerArrRealm![numberOfQuestion].questionCost) USD"
             Balance.text = String("\(moneyBalance) USD")
             
             AnswerLableStateText(lable: Answer1Title, numberOfQuestion: numberOfQuestion, numberOfAnswer: 0)
             AnswerLableStateText(lable: Answer2Title, numberOfQuestion: numberOfQuestion, numberOfAnswer: 1)
             AnswerLableStateText(lable: Answer3Title, numberOfQuestion: numberOfQuestion, numberOfAnswer: 2)
             AnswerLableStateText(lable: Answer4Title, numberOfQuestion: numberOfQuestion, numberOfAnswer: 3)
-
         } else {
             let alert = UIAlertController(title: "Игра окончена", message: "Поздравляю! \(Singleton.shared.name) Вы стали миллионером!", preferredStyle: UIAlertController.Style.alert)
-            //alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-            let score = GameResults(cash: moneyBalance, questionsRight: questionStart, allQuestions: QuestionAnswerArr.count, playerName: NameGamerLable.text ?? "Эдгар")
+            
+            let score = GameResults(cash: moneyBalance, questionsRight: questionStart.value, allQuestions: QuestionAnswerArrRealm!.count, playerName: NameGamerLable.text ?? "Эдгар")
             print(score.allQuestions)
             print(score.procentOfWin)
             Singleton.shared.addResult(result: score)
@@ -179,7 +228,6 @@ class GameViewController: UIViewController {
                 self.back()
             })
         }
-        
     }
     
     func back() {
@@ -187,13 +235,13 @@ class GameViewController: UIViewController {
     }
     
     func AnswerLableStateText(lable: UIButton, numberOfQuestion: Int, numberOfAnswer: Int ) {
-        lable.setTitle("\(QuestionAnswerArr[numberOfQuestion].answer[numberOfAnswer].answer)", for: .normal)
+        lable.setTitle("\(QuestionAnswerArrRealm![numberOfQuestion].answer[numberOfAnswer].answer)", for: .normal)
         lable.setBackgroundImage(UIImage(named: "windowAns"), for: .normal)
         lable.isHidden = false
         lable.setTitleColor(.white, for: .normal)
     }
     
-    func checkAnswer(Answer: Answer, AnswerPosition: UIButton) -> Bool {
+    func checkAnswer(Answer: AnswerRealm, AnswerPosition: UIButton) -> Bool {
         guard AnswerPosition.title(for: .normal) == Answer.answer  else { return false }
         if Answer.answerBool == 0 {
             print("ошибка")
@@ -205,7 +253,7 @@ class GameViewController: UIViewController {
                 self.back()
                 self.back()
             })
-            let score = GameResults(cash: moneyBalance, questionsRight: questionStart, allQuestions: QuestionAnswerArr.count, playerName: NameGamerLable.text ?? "Эдгар")
+            let score = GameResults(cash: moneyBalance, questionsRight: questionStart.value, allQuestions: QuestionAnswerArrRealm!.count, playerName: NameGamerLable.text ?? "Эдгар")
             Singleton.shared.addResult(result: score)
             self.onGameEnd!(moneyBalance)
             return false
@@ -213,16 +261,16 @@ class GameViewController: UIViewController {
         } else {
             print("победа")
             AnswerPosition.setBackgroundImage(UIImage(named: "correct"), for: .normal)
-            questionStart += 1
+            questionStart.value += 1
             moneyBalance = moneyBalance + Answer.answerCost
-            Singleton.shared.numberOfQuestion = questionStart
+            Singleton.shared.numberOfQuestion = questionStart.value
             Singleton.shared.score = moneyBalance
             
             return true
         }
     }
     
-    func PromptHelpPeople(QuestionAnswerStruct: QuestionAnswerStruct) {
+    func PromptHelpPeople(QuestionAnswerStruct: QuestionAnswerRealm) {
         if QuestionAnswerStruct.answer[0].answerBool == 1 {
             Answer1Title.setTitleColor(.green, for: .normal)
         } else if QuestionAnswerStruct.answer[1].answerBool == 1 {
@@ -234,7 +282,7 @@ class GameViewController: UIViewController {
         }
     }
     
-    func Prompt50T50(QuestionAnswerStruct: QuestionAnswerStruct) {
+    func Prompt50T50(QuestionAnswerStruct: QuestionAnswerRealm) {
         var i = 0
         while i < 2 {
             if QuestionAnswerStruct.answer[0].answerBool == 0 {
@@ -254,7 +302,7 @@ class GameViewController: UIViewController {
         }
     }
     
-    func PromptCallFriend(QuestionAnswerStruct: QuestionAnswerStruct) {
+    func PromptCallFriend(QuestionAnswerStruct: QuestionAnswerRealm) {
         if QuestionAnswerStruct.answer[0].answerBool == 0 && Answer1Title.isHidden != true {
             Answer1Title.setTitleColor(.brown, for: .normal)
         } else if QuestionAnswerStruct.answer[1].answerBool == 0 && Answer2Title.isHidden != true {
@@ -269,7 +317,24 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if QuestionAnswerArrRealmNo!.isEmpty{
+            addRealmBase()
+        }
+        if difficulty == .hard {
+            QuestionAnswerArrRealm = QuestionAnswerArrRealmNo?.toArray(type: QuestionAnswerRealm.self).shuffled()
+            
+        } else if difficulty == .easy {
+            QuestionAnswerArrRealm = QuestionAnswerArrRealmNo?.toArray(type: QuestionAnswerRealm.self)
+            Singleton.shared.allQuestionId = QuestionAnswerArrRealm!.last!.questionId
+        }
+        
         NameGamerLable.text = Singleton.shared.name
-        addQuestion(numberOfQuestion: questionStart)
+        addQuestion(numberOfQuestion: questionStart.value)
+    }
+    
+}
+extension Results {
+    func toArray<T>(type: T.Type) -> [T] {
+        return compactMap { $0 as? T }
     }
 }

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,11 +16,20 @@
 		160562D62549B84000E26EB0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 160562D42549B84000E26EB0 /* LaunchScreen.storyboard */; };
 		160562DE2549C56600E26EB0 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160562DD2549C56600E26EB0 /* GameViewController.swift */; };
 		160562E02549C64200E26EB0 /* ScoreCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160562DF2549C64200E26EB0 /* ScoreCellTableViewCell.swift */; };
+		160C861525542E8D00C6C9B8 /* BuilderQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160C861425542E8D00C6C9B8 /* BuilderQuestion.swift */; };
+		160C86182554863200C6C9B8 /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160C86172554863200C6C9B8 /* Observer.swift */; };
+		1612AF35254ECAA400575034 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1612AF34254ECAA400575034 /* SettingsViewController.swift */; };
+		164FC64E254F0E750059E968 /* CreateQuestinsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164FC64D254F0E750059E968 /* CreateQuestinsViewController.swift */; };
+		164FC650254F0EFF0059E968 /* CreateQuestinsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164FC64F254F0EFF0059E968 /* CreateQuestinsTableViewCell.swift */; };
+		164FC6522550906F0059E968 /* Difficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164FC6512550906F0059E968 /* Difficulty.swift */; };
+		167B36BD2552AA6300E847B8 /* QuestionsClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167B36BC2552AA6300E847B8 /* QuestionsClass.swift */; };
+		167B36BF2552AD2200E847B8 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167B36BE2552AD2200E847B8 /* RealmManager.swift */; };
 		16D6919B254B250000B154B1 /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D6919A254B250000B154B1 /* Singleton.swift */; };
 		16D6919F254BFB6E00B154B1 /* GameSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D6919E254BFB6E00B154B1 /* GameSession.swift */; };
 		16D691A1254C349E00B154B1 /* Memento.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D691A0254C349E00B154B1 /* Memento.swift */; };
 		16EBFA012549CA720019CA12 /* QuestionAnswerStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EBFA002549CA720019CA12 /* QuestionAnswerStruct.swift */; };
 		16EBFA032549D2A00019CA12 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EBFA022549D2A00019CA12 /* ResultViewController.swift */; };
+		8DC2EC4D7180B8D503754D94 /* Pods_WhoWantToBeAMillionaire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAD03B8872CA208DE921562E /* Pods_WhoWantToBeAMillionaire.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,11 +44,22 @@
 		160562D72549B84000E26EB0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		160562DD2549C56600E26EB0 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		160562DF2549C64200E26EB0 /* ScoreCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCellTableViewCell.swift; sourceTree = "<group>"; };
+		160C861425542E8D00C6C9B8 /* BuilderQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuilderQuestion.swift; sourceTree = "<group>"; };
+		160C86172554863200C6C9B8 /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
+		1612AF34254ECAA400575034 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		164FC64D254F0E750059E968 /* CreateQuestinsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateQuestinsViewController.swift; sourceTree = "<group>"; };
+		164FC64F254F0EFF0059E968 /* CreateQuestinsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateQuestinsTableViewCell.swift; sourceTree = "<group>"; };
+		164FC6512550906F0059E968 /* Difficulty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Difficulty.swift; sourceTree = "<group>"; };
+		167B36BC2552AA6300E847B8 /* QuestionsClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsClass.swift; sourceTree = "<group>"; };
+		167B36BE2552AD2200E847B8 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		16D6919A254B250000B154B1 /* Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
 		16D6919E254BFB6E00B154B1 /* GameSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSession.swift; sourceTree = "<group>"; };
 		16D691A0254C349E00B154B1 /* Memento.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memento.swift; sourceTree = "<group>"; };
 		16EBFA002549CA720019CA12 /* QuestionAnswerStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionAnswerStruct.swift; sourceTree = "<group>"; };
 		16EBFA022549D2A00019CA12 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		4219927288977A15F4E7DEDA /* Pods-WhoWantToBeAMillionaire.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhoWantToBeAMillionaire.debug.xcconfig"; path = "Target Support Files/Pods-WhoWantToBeAMillionaire/Pods-WhoWantToBeAMillionaire.debug.xcconfig"; sourceTree = "<group>"; };
+		A5AB606F99231409A870CD9F /* Pods-WhoWantToBeAMillionaire.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhoWantToBeAMillionaire.release.xcconfig"; path = "Target Support Files/Pods-WhoWantToBeAMillionaire/Pods-WhoWantToBeAMillionaire.release.xcconfig"; sourceTree = "<group>"; };
+		CAD03B8872CA208DE921562E /* Pods_WhoWantToBeAMillionaire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhoWantToBeAMillionaire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DC2EC4D7180B8D503754D94 /* Pods_WhoWantToBeAMillionaire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,6 +79,8 @@
 			children = (
 				160562C52549B83D00E26EB0 /* WhoWantToBeAMillionaire */,
 				160562C42549B83D00E26EB0 /* Products */,
+				C38BB9F3542F148A7C598DA1 /* Pods */,
+				BD145E65A8C4DF641729DD7A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,9 +97,13 @@
 			children = (
 				160562C62549B83D00E26EB0 /* AppDelegate.swift */,
 				160562C82549B83D00E26EB0 /* SceneDelegate.swift */,
+				167B36BE2552AD2200E847B8 /* RealmManager.swift */,
+				160C86162554860300C6C9B8 /* Observer */,
+				160C861325542E6900C6C9B8 /* Builder */,
+				167B36BB2552AA1F00E847B8 /* Realm Object */,
 				160562E12549C65100E26EB0 /* ViewControllers */,
 				16EBFA062549D2CE0019CA12 /* Structs */,
-				160562DF2549C64200E26EB0 /* ScoreCellTableViewCell.swift */,
+				1612AF38254ED29900575034 /* Cell */,
 				160562CC2549B83D00E26EB0 /* Main.storyboard */,
 				160562D22549B84000E26EB0 /* Assets.xcassets */,
 				160562D42549B84000E26EB0 /* LaunchScreen.storyboard */,
@@ -92,19 +119,72 @@
 				160562CA2549B83D00E26EB0 /* MainViewController.swift */,
 				160562DD2549C56600E26EB0 /* GameViewController.swift */,
 				16EBFA022549D2A00019CA12 /* ResultViewController.swift */,
+				1612AF34254ECAA400575034 /* SettingsViewController.swift */,
+				164FC64D254F0E750059E968 /* CreateQuestinsViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		160C861325542E6900C6C9B8 /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				160C861425542E8D00C6C9B8 /* BuilderQuestion.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
+		160C86162554860300C6C9B8 /* Observer */ = {
+			isa = PBXGroup;
+			children = (
+				160C86172554863200C6C9B8 /* Observer.swift */,
+			);
+			path = Observer;
+			sourceTree = "<group>";
+		};
+		1612AF38254ED29900575034 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				160562DF2549C64200E26EB0 /* ScoreCellTableViewCell.swift */,
+				164FC64F254F0EFF0059E968 /* CreateQuestinsTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		167B36BB2552AA1F00E847B8 /* Realm Object */ = {
+			isa = PBXGroup;
+			children = (
+				167B36BC2552AA6300E847B8 /* QuestionsClass.swift */,
+			);
+			path = "Realm Object";
 			sourceTree = "<group>";
 		};
 		16EBFA062549D2CE0019CA12 /* Structs */ = {
 			isa = PBXGroup;
 			children = (
-				16EBFA002549CA720019CA12 /* QuestionAnswerStruct.swift */,
 				16D6919A254B250000B154B1 /* Singleton.swift */,
+				16EBFA002549CA720019CA12 /* QuestionAnswerStruct.swift */,
 				16D6919E254BFB6E00B154B1 /* GameSession.swift */,
 				16D691A0254C349E00B154B1 /* Memento.swift */,
+				164FC6512550906F0059E968 /* Difficulty.swift */,
 			);
 			path = Structs;
+			sourceTree = "<group>";
+		};
+		BD145E65A8C4DF641729DD7A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CAD03B8872CA208DE921562E /* Pods_WhoWantToBeAMillionaire.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C38BB9F3542F148A7C598DA1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4219927288977A15F4E7DEDA /* Pods-WhoWantToBeAMillionaire.debug.xcconfig */,
+				A5AB606F99231409A870CD9F /* Pods-WhoWantToBeAMillionaire.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -114,9 +194,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 160562DA2549B84000E26EB0 /* Build configuration list for PBXNativeTarget "WhoWantToBeAMillionaire" */;
 			buildPhases = (
+				AE1D8514D9AF9FAD499249EA /* [CP] Check Pods Manifest.lock */,
 				160562BF2549B83D00E26EB0 /* Sources */,
 				160562C02549B83D00E26EB0 /* Frameworks */,
 				160562C12549B83D00E26EB0 /* Resources */,
+				00976FF74E9A5FF9C1E96D90 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -173,22 +255,72 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		00976FF74E9A5FF9C1E96D90 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WhoWantToBeAMillionaire/Pods-WhoWantToBeAMillionaire-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WhoWantToBeAMillionaire/Pods-WhoWantToBeAMillionaire-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WhoWantToBeAMillionaire/Pods-WhoWantToBeAMillionaire-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AE1D8514D9AF9FAD499249EA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WhoWantToBeAMillionaire-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		160562BF2549B83D00E26EB0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				167B36BD2552AA6300E847B8 /* QuestionsClass.swift in Sources */,
 				160562E02549C64200E26EB0 /* ScoreCellTableViewCell.swift in Sources */,
+				164FC64E254F0E750059E968 /* CreateQuestinsViewController.swift in Sources */,
+				164FC6522550906F0059E968 /* Difficulty.swift in Sources */,
 				16D6919B254B250000B154B1 /* Singleton.swift in Sources */,
 				16D6919F254BFB6E00B154B1 /* GameSession.swift in Sources */,
+				167B36BF2552AD2200E847B8 /* RealmManager.swift in Sources */,
 				160562DE2549C56600E26EB0 /* GameViewController.swift in Sources */,
 				160562D12549B83D00E26EB0 /* WhoWantToBeAMillionaire.xcdatamodeld in Sources */,
+				160C86182554863200C6C9B8 /* Observer.swift in Sources */,
 				16EBFA032549D2A00019CA12 /* ResultViewController.swift in Sources */,
 				16D691A1254C349E00B154B1 /* Memento.swift in Sources */,
+				160C861525542E8D00C6C9B8 /* BuilderQuestion.swift in Sources */,
 				160562CB2549B83D00E26EB0 /* MainViewController.swift in Sources */,
 				160562C72549B83D00E26EB0 /* AppDelegate.swift in Sources */,
 				16EBFA012549CA720019CA12 /* QuestionAnswerStruct.swift in Sources */,
 				160562C92549B83D00E26EB0 /* SceneDelegate.swift in Sources */,
+				1612AF35254ECAA400575034 /* SettingsViewController.swift in Sources */,
+				164FC650254F0EFF0059E968 /* CreateQuestinsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,6 +462,7 @@
 		};
 		160562DB2549B84000E26EB0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4219927288977A15F4E7DEDA /* Pods-WhoWantToBeAMillionaire.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -348,6 +481,7 @@
 		};
 		160562DC2549B84000E26EB0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A5AB606F99231409A870CD9F /* Pods-WhoWantToBeAMillionaire.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
